@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { Pokemon } from '../lib/pokemon/schemas'
+import { For } from './utils/for'
 
 interface Props {
   pokemon: Pokemon
@@ -29,13 +30,23 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => (
             <li className="text-lg font-bold">Weight: {pokemon.weight}</li>
           </ul>
           <div className="flex justify-end gap-2">
-            {pokemon.types.map((type) => (
+            <For
+              each={pokemon.types}
+              render={(pokemon) => (
+                <div
+                  key={pokemon.name}
+                  className="w-[25px] h-[25px] rounded-full border-2 border-white"
+                  style={{ backgroundColor: pokemon.color }}
+                />
+              )}
+            />
+            {/* {pokemon.types.map((type) => (
               <div
                 key={type.name}
                 className="w-[25px] h-[25px] rounded-full border-2 border-white"
                 style={{ backgroundColor: type.color }}
               />
-            ))}
+            ))} */}
           </div>
         </div>
       </div>
