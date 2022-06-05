@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { FC } from 'react'
 
 import { Pokemon } from '../lib/pokemon/schemas'
 import { For } from './utils/for'
@@ -8,8 +9,8 @@ interface Props {
   // onClick?: () => void
 }
 
-const PokemonCard: React.FC<Props> = ({ pokemon }) => (
-  <div className="bg-white rounded-md p-5" style={{ backgroundColor: pokemon.color }}>
+const PokemonCard: FC<Props> = ({ pokemon }) => (
+  <div className="bg-white rounded-md p-5 hover:scale-105 transition-transform duration-200" style={{ backgroundColor: pokemon.color }}>
     <h2 className="text-2xl font-bold first-letter:uppercase text-center mb-3">{pokemon.name}</h2>
     <div className="flex items-center gap-3">
       <figure className="flex justify-center items-center overflow-hidden rounded-full ">
@@ -40,13 +41,6 @@ const PokemonCard: React.FC<Props> = ({ pokemon }) => (
                 />
               )}
             />
-            {/* {pokemon.types.map((type) => (
-              <div
-                key={type.name}
-                className="w-[25px] h-[25px] rounded-full border-2 border-white"
-                style={{ backgroundColor: type.color }}
-              />
-            ))} */}
           </div>
         </div>
       </div>
